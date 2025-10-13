@@ -10,14 +10,14 @@
     src: url(./assets/fonts/young-serif/YoungSerif-Regular.ttf) format("truetype");
 }
 
- * {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 :root {
-    --document-font-size: 16px;
+    /* --document-font-size: ;*/
     --fw-400: 400;
     --fw-600: 600;
     --fw-700: 700;
@@ -29,6 +29,14 @@
     --brown-800: hsl(14, 45%, 36%);
     --rose-800: hsl(332, 51%, 32%);
     --rose-50: hsl(330, 100%, 98%);
+    --line-height-200: 200%;
+    --line-height-140: 140%;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    font-family: "Outfit", serif;
 }
 
 h1,
@@ -43,20 +51,31 @@ h3 {
     color: var(--brown-800);
 }
 
-body, 
-p {
-    font-family: "Outfit", serif;
-    font-size: var(--document-font-size);
+hr {
+    border: 1px solid var(--rose-50);
 }
 
-/* br {
-    
-} */
-
 @media screen and (max-width: 399px) {
-    img,
+    body {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    p {
+        line-height: var(--line-height-140);
+        letter-spacing: 0.2px;
+    }
+
+    img {
+        height: 175px;
+    }
+    
     .container,
-    .recipe-card {
+    .recipe-card,
+    img {
         width: 100%;
     }
 
@@ -64,37 +83,25 @@ p {
     .recipe-card {
         height: 100vh;
     }
-    
-    img {
-        height: 175px;
-    }
 
-    /* h2 {
-        line-height: 120%;
-    } */
-
-    body,
-    p {
-        font-size: 14px;
-    }
-
-    p {
-        line-height: 140%;
-        letter-spacing: 0.2px;
+    .recipe-info,
+    .name-and-desc,
+    .ingredients,
+    .instructions,
+    .nutrition,
+    .nutritional-table {
+        display: flex;
+        flex-direction: column;
     }
 
     .recipe-info {
         background-color: var(--white);
         color: var(--stone-900);
         padding: 25px;
-        display: flex;
-        flex-direction: column;
         gap: 24px;
     }
 
     .name-and-desc {
-        display: flex;
-        flex-direction: column;
         gap: 16px;
     }
 
@@ -102,14 +109,12 @@ p {
         background-color: var(--rose-50);
         padding: 20px 20px 10px;
         border-radius: 5px;
-        line-height: 200%;
+        line-height: var(--line-height-200);
     }
 
     .preparation-card p {
         color: var(--rose-800);
-        /* font-size: var(--document-font-size); */
         font-size: 18px;
-        font-weight: var(--fw-600);
     }
 
     .preparation-card ul {
@@ -117,94 +122,83 @@ p {
         padding: 10px;
     }
 
-    .highlight {
+    .highlight,
+    .preparation-card p {
         font-weight: var(--fw-600);
     }
 
-    h2 {
-        font-size: 24px;
-        /* line-height: 120%; */
-    }
-
-    .ingredients {
-        line-height: 200%;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    .ingredients ul {
-        margin-left: 25px;
-    }
-
+    .ingredients,
     .instructions {
-        line-height: 200%;
-        display: flex;
-        flex-direction: column;
+        line-height: var(--line-height-200);
         gap: 16px;
     }
 
+    .ingredients ul,
     .instructions ol {
         margin-left: 25px;
     }
 
     .nutrition {
-        line-height: 200%;
-        display: flex;
-        flex-direction: column;
+        line-height: var(--line-height-200);
         gap: 24px;
     }
 
-    .nutrition .nutritional-table {
-        display: flex;
-        flex-direction: column;
+    .nutritional-table {
         gap: 22px;
     }
 
-    .nutrition .nutritional-table .table-value {
+    .table-value {
         display: inline-flex;
         justify-content: space-around;
-        gap: 16px;
     }
 
-    .nutrition .nutritional-table .table-value .highlight {
+    .table-value .highlight {
         color: var(--brown-800)
     }
 }
 
-/* @media screen and (min-width: 400px) and (max-width: 699px), (min-width: 700px) {
+@media screen and (min-width: 400px) and (max-width: 799px), (min-width: 800px) {
     body {
-        height: 100vh;
-        width: 100%;
-    }
-
-    body,
-    p {
-        font-size: 14px;
+        font-size: 8px;
     }
 
     p {
-        line-height: 140%;
+        line-height: var(--line-height-140);
         letter-spacing: 0.2px;
     }
 
     img {
-        height: 200px;
+        height: 175px;
         width: 335px;
         border-radius: 5px;
+    }
+
+    hr {
+        display: none;
+    }
+
+    .container {
+        display: flex;
+    }
+
+    .recipe-info,
+    .name-and-desc,
+    .ingredients,
+    .instructions {
+        display: flex;
+        flex-direction: column;
     }
     
     .container {
         height: inherit;
         width: inherit;
         background-color: var(--stone-100);
-        display: flex;
         justify-content: center;
         align-items: center;
     }
 
     .recipe-card {
-        height: 80vh;
+        height: 90vh;
         width: 375px;
         background-color: var(--white);
         border-radius: 10px;
@@ -214,21 +208,58 @@ p {
     .recipe-info {
         width: 335px;
         color: var(--stone-900);
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
+        flex-wrap: wrap;
+        gap: 5px;
     }
 
     .name-and-desc {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
+        margin-top: 10px;
+        gap: 10px;
     }
 
     .preparation-card {
+        margin-top: 10px;
         background-color: var(--rose-50);
-        padding: 20px 20px 10px;
+        padding: 10px 10px 0px 15px;
         border-radius: 5px;
-        line-height: 200%;
+        line-height: var(--line-height-200);
     }
-} */
+
+    .preparation-card p {
+        color: var(--rose-800);
+        font-size: 12px;
+    }
+
+    .preparation-card ul {
+        margin-left: 15px;
+        padding: 10px;
+    }
+
+    .highlight,
+    .preparation-card p {
+        font-weight: var(--fw-600);
+    }
+
+    .ingredients {
+        margin-top: 5px;
+        line-height: 200%;
+        gap: 10px;
+    }
+
+    .ingredients ul {
+        margin-left: 25px;
+    }
+
+    .instructions {
+        line-height: var(--line-height-200);
+        gap: 10px;
+    }
+
+    .instructions ol {
+        margin-left: 20px;
+    }
+
+    .nutrition {
+        display: none;
+    }
+}
