@@ -11,10 +11,9 @@ This is a solution to the [Recipe page challenge on Frontend Mentor](https://www
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
-  - [Continued development](#continued-development)
   - [Useful resources](#useful-resources)
 - [Author](#author)
-<!-- - [Acknowledgments](#acknowledgments) -->
+- [Acknowledgments](#acknowledgments)
 
 ## Overview
 ### Screenshot
@@ -35,14 +34,11 @@ This is a solution to the [Recipe page challenge on Frontend Mentor](https://www
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
 - Mobile-first workflow
 
 ### What I learned
 
-I challenged myself to start with a mobile-first design, and then scaled to larger screens. The most important thing was structuring my stylesheet better and targeting the different screen sizes.
-
-Documents my media queries:
+For my initial attempt, I challenged myself to start with a mobile-first design, and then scale the design to larger screens. That didn't work out well as I couldn't see how I'd maintain both the mobile view and desktop version without two separate html files. I tried media queries to target different screen sizes as you can see below:
 
 ```css
 /* Mobile views */
@@ -53,17 +49,99 @@ Documents my media queries:
 @media screen and (min-width: 400px) and (max-width: 799px), (min-width: 800px) { }
 ```
 
-### Continued development
+But it was just too complex. The design looked exact on mobile but on a larger screen, it was too tiny. I looked at [ddomagoj](https://www.frontendmentor.io/profile/ddominik16)'s solution which was exactly what I wanted for the larger screen sizes so I rewrote the structure of the page and most of the entire stylesheet, starting with destop view this time and just tiny changes to achieve the mobile view.
 
-- The font-size that fits all content on large screen size, because the last section `nutrition` is currently set to `dispaly: none` on screens from 400px because it overflows.
-- Table for the nutritional values
+I also unfortunately ended up flexing my `body` element, as it's my rule to not apply anything beyond basic styles to my `body` but that's how it seemed to work this time.
 
-<!-- ### Useful resources
+```css
+body {
+    height: 100%;
+    /* width: 100%;  Removed as it restricts the container from full height */
+    font-family: "Outfit", sans-serif;
+    line-height: var(--lh-150);
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+    /* In another part of the stylesheet */
+    margin: 120px 0px;
+    background-color: var(--stone-150);
+    color: var(--stone-600);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+```
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.** -->
+I learnt a lot from ddomagoj's code on text formatting:
+```css
+/* Text formatting styles */
+p {
+    text-wrap: pretty; /* Adds better line wrapping and text breaking */
+}
+h1,
+h2,
+h3 {
+    text-wrap: balance; /* Text wrapping for headlines */
+}
+p,
+h1,
+h2,
+h3 {
+    overflow-wrap: break-word; /* Avoid text overflow */
+}
+```
+
+Media defaults:
+```css
+/* Improve media defaults */
+img {
+    display: block;
+    max-width: 100%;
+}
+```
+
+The rest of the stylesheet just follows styling according to good practices and the style I've picked up over the past few challenges. This is the media query to achieve the mobile view:
+```css
+@media screen and (max-width: 399px) {
+    body {
+        height: 100%;
+        margin: 0;
+        background-color: var(--white);
+    }
+
+    img {
+        border-radius: 0px;
+    }
+
+    .container {
+        height: 100vh;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: inherit;
+    }
+
+    .name-and-desc,
+    .ingredients,
+    .instructions,
+    .nutrition,
+    table {
+        padding: 0px 40px;
+    }
+
+    .name-and-desc h1 {
+        font-size: 36px;
+    }
+
+    .preparation-card {
+        margin: 20px 40px;
+    }
+}
+``` 
+Which is great, because I just needed a few tweaks to achieve it after designing for the desktop version primarily. 
+
+### Useful resources
+
+- [CSS text-wrap: pretty](https://developer.chrome.com/blog/css-text-wrap-pretty) - From the Chrome for Developers blog, easily explained the text-wrap property to me and outlined how I used it for headings and the rest of the page's text.
+- [overflow-wrap](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow-wrap) - From MDN, quickly shows what the `overflow-wrap` property is; it prevents the text from overflowing its line box.
 
 ## Author
 
@@ -71,8 +149,6 @@ Documents my media queries:
 - Frontend Mentor - [@odunlemi](https://www.frontendmentor.io/profile/odunlemi)
 - Twitter - [@odunlemi](https://www.x.com/odunlemi)
 
-<!-- ## Acknowledgments
+## Acknowledgments
 
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.** -->
+Shoutout to [ddomagoj](https://www.frontendmentor.io/profile/ddominik16), reviewing your solution helped me solve this one. I couldn't find your code (as the github link was broken) but inspecting the page and looking at it through the developer tools proved helpful.
