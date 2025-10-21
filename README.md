@@ -48,7 +48,7 @@ For my initial attempt, I challenged myself to start with a mobile-first design,
 @media screen and (min-width: 400px) and (max-width: 799px), (min-width: 800px) { }
 ```
 
-But it was just too complex. The design looked exact on mobile but on a larger screen, it was too tiny. I looked at [ddomagoj](https://www.frontendmentor.io/profile/ddominik16)'s solution which was exactly what I wanted for the larger screen sizes so I rewrote the structure of the page and most of the entire stylesheet, starting with destop view this time and just tiny changes to achieve the mobile view.
+But it was just too complex. The design looked exact on mobile but on a larger screen, it was too tiny. I looked at [ddomagoj](https://www.frontendmentor.io/profile/ddominik16)'s solution which was exactly what I wanted for the larger screen sizes so I rewrote the structure of the page and most of the entire stylesheet, starting with desktop view this time and just tiny changes to achieve the mobile view.
 
 I also unfortunately ended up flexing my `body` element, as it's my rule to not apply anything beyond basic styles to my `body` but that's how it seemed to work this time.
 
@@ -146,7 +146,7 @@ Which is great, because I just needed a few tweaks to achieve it after designing
 
 - Website - [Abiodun Longe](https://odunlemi.github.io/)
 - Frontend Mentor - [@odunlemi](https://www.frontendmentor.io/profile/odunlemi)
-- Twitter - [@odunlemi](https://www.x.com/odunlemi)
+- X - [@odunlemi](https://www.x.com/odunlemi)
 
 ## Acknowledgments
 
